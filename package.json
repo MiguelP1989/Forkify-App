@@ -1,0 +1,25 @@
+{
+  "name": "forkiffy-app",
+  "version": "1.0.0",
+  "description": "forkify project",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11"
+  },
+  "scripts": {
+    "dev": "webpack --mode development",
+    "build": "webpack --mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MiguelP1989/Forkify-App.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MiguelP1989/Forkify-App/issues"
+  },
+  "homepage": "https://github.com/MiguelP1989/Forkify-App#readme"
+}
