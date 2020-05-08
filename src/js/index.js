@@ -31,7 +31,8 @@
 ///////////////////
 
 import Search from "./modules/Search";
-
+import * as searchView from "./views/searchView";
+import { elements } from "./views/base";
 // Global state of the app
 // - search object
 // -current recipes object
@@ -42,7 +43,7 @@ const state = {};
 
 const constrolSearch = async () => {
   //1 -get salary from view
-  const query = "pizza"; //// TODO:
+  const query = searchView.getInput(); //// TODO:
 
   if (query) {
     // 2 - New serch objt and add to state
@@ -50,16 +51,19 @@ const constrolSearch = async () => {
 
     //3 -prepare UI for results
 
+    searchView.clearInput();
+    searchView.clearResults();
+
     // 4 - search for recipes
     await state.search.getResults();
 
     // 5 - render results on UI
-
-    console.log("state.search.result", state.search.result);
+    // console.log("state.search.result", state.search.result);
+    searchView.renderResults(state.search.result);
   }
 };
 
-document.querySelector(".search").addEventListener("submit", e => {
+elements.searchForm.addEventListener("submit", e => {
   e.preventDefault();
   constrolSearch();
 });
