@@ -32,6 +32,38 @@
 
 import Search from "./modules/Search";
 
-const search = new Search("pizza");
-console.log(search);
-search.getResults();
+// Global state of the app
+// - search object
+// -current recipes object
+// -shoping list object
+// -liked Recipes
+
+const state = {};
+
+const constrolSearch = async () => {
+  //1 -get salary from view
+  const query = "pizza"; //// TODO:
+
+  if (query) {
+    // 2 - New serch objt and add to state
+    state.search = new Search(query);
+
+    //3 -prepare UI for results
+
+    // 4 - search for recipes
+    await state.search.getResults();
+
+    // 5 - render results on UI
+
+    console.log("state.search.result", state.search.result);
+  }
+};
+
+document.querySelector(".search").addEventListener("submit", e => {
+  e.preventDefault();
+  constrolSearch();
+});
+
+// const search = new Search("pizza");
+// console.log("search", search);
+// search.getResults();
