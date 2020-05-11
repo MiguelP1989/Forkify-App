@@ -33,6 +33,7 @@
 // import Recipe from "./modules/Search";
 import Search from "./modules/Search";
 import * as searchView from "./views/searchView";
+import * as recipeView from "./views/recipeView";
 import { elements, reducerLoader, clearLoader } from "./views/base";
 // Global state of the app
 // - search object
@@ -104,6 +105,8 @@ const controlRecipe = async () => {
 
   if (id) {
     // Prepar ui for changes
+    recipeView.clearRecipe();
+    reducerLoader(elements.recipe);
 
     // Creating new recipe obj
 
@@ -123,6 +126,8 @@ const controlRecipe = async () => {
 
       //render recipe
       console.log(state.recipe);
+      clearLoader();
+      recipeView.renderRecipe(state.recipe);
     } catch (err) {
       console.log("error processing recipe");
     }
@@ -132,7 +137,7 @@ const controlRecipe = async () => {
 // window.addEventListener("hashchange", controlRecipe);
 // window.addEventListener("load", controlRecipe);
 
-["hashchange", "loader"].forEach(event =>
+["hashchange", "load"].forEach(event =>
   window.addEventListener(event, controlRecipe)
 );
 
