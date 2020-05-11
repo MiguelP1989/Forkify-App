@@ -88,9 +88,44 @@ elements.searchResPages.addEventListener("click", e => {
 /* RECIPE CONTROLER */
 import Recipe from "./modules/Recipe";
 
-const r = new Recipe(47746);
-console.log("riiiiii", r);
-r.getRecipe();
+// const r = new Recipe(47746);
+// console.log("riiiiii", r);
+// r.getRecipe();
+
+const controlRecipe = async () => {
+  //GET id from url
+  const id = window.location.hash.replace("#", "");
+  console.log(id);
+
+  if (id) {
+    // Prepar ui for changes
+
+    // Creating new recipe obj
+
+    state.recipe = new Recipe(id);
+
+    try {
+      // get recipe data
+      await state.recipe.getRecipe();
+
+      // calculate serving and time
+      state.recipe.calcTime();
+      state.recipe.calcServings();
+
+      //render recipe
+      console.log(state.recipe);
+    } catch (err) {
+      console.log("error processing recipe");
+    }
+  }
+};
+
+// window.addEventListener("hashchange", controlRecipe);
+// window.addEventListener("load", controlRecipe);
+
+["hashchange", "loader"].forEach(event =>
+  window.addEventListener(event, controlRecipe)
+);
 
 // const search = new Search("pizza");
 // console.log("search", search);
