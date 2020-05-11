@@ -180,11 +180,11 @@ body {
   color: #968b87;
 }
 
-.loader {
+/* .loader {
   margin: 5rem auto;
   text-align: center;
-}
-.loader svg {
+} */
+/* .loader svg {
   height: 5.5rem;
   width: 5.5rem;
   fill: #f59a83;
@@ -195,6 +195,26 @@ body {
 @keyframes rotate {
   0% {
     transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+} */
+
+.loader {
+  margin: 5rem auto;
+  text-align: center;
+  border: 1.6rem solid #f59a83;
+  border-radius: 50%;
+  border-top: 1.6rem solid white;
+  width: 6rem;
+  height: 6rem;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
   }
   100% {
     transform: rotate(360deg);

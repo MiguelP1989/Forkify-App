@@ -12,7 +12,7 @@ export default class Search {
         `https://forkify-api.herokuapp.com/api/search?q=${this.query}`
       );
       this.result = result.data.recipes;
-      console.log("Recipes", this.result);
+      // console.log("Recipes", this.result);
     } catch (err) {
       console.log(err);
     }

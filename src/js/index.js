@@ -32,7 +32,7 @@
 
 import Search from "./modules/Search";
 import * as searchView from "./views/searchView";
-import { elements } from "./views/base";
+import { elements, reducerLoader, clearLoader } from "./views/base";
 // Global state of the app
 // - search object
 // -current recipes object
@@ -42,7 +42,7 @@ import { elements } from "./views/base";
 const state = {};
 
 const constrolSearch = async () => {
-  //1 -get salary from view
+  //1 -get inputs from view
   const query = searchView.getInput(); //// TODO:
 
   if (query) {
@@ -53,12 +53,14 @@ const constrolSearch = async () => {
 
     searchView.clearInput();
     searchView.clearResults();
+    reducerLoader(elements.searchRes);
 
     // 4 - search for recipes
     await state.search.getResults();
 
     // 5 - render results on UI
     // console.log("state.search.result", state.search.result);
+    clearLoader();
     searchView.renderResults(state.search.result);
   }
 };
