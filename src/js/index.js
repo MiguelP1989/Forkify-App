@@ -30,6 +30,7 @@
 
 ///////////////////
 
+// import Recipe from "./modules/Search";
 import Search from "./modules/Search";
 import * as searchView from "./views/searchView";
 import { elements, reducerLoader, clearLoader } from "./views/base";
@@ -41,6 +42,7 @@ import { elements, reducerLoader, clearLoader } from "./views/base";
 
 const state = {};
 
+/* SEARCH CONTROLER */
 const constrolSearch = async () => {
   //1 -get inputs from view
   const query = searchView.getInput(); //// TODO:
@@ -80,6 +82,15 @@ elements.searchResPages.addEventListener("click", e => {
     console.log(goToPage);
   }
 });
+
+////////////////////////////////////////////////
+
+/* RECIPE CONTROLER */
+import Recipe from "./modules/Recipe";
+
+const r = new Recipe(47746);
+console.log("riiiiii", r);
+r.getRecipe();
 
 // const search = new Search("pizza");
 // console.log("search", search);
