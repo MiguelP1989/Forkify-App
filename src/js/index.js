@@ -57,13 +57,18 @@ const constrolSearch = async () => {
     searchView.clearResults();
     reducerLoader(elements.searchRes);
 
-    // 4 - search for recipes
-    await state.search.getResults();
+    try {
+      // 4 - search for recipes
+      await state.search.getResults();
 
-    // 5 - render results on UI
-    // console.log("state.search.result", state.search.result);
-    clearLoader();
-    searchView.renderResults(state.search.result);
+      // 5 - render results on UI
+      // console.log("state.search.result", state.search.result);
+      clearLoader();
+      searchView.renderResults(state.search.result);
+    } catch (err) {
+      console.log("something wrong with the search");
+      clearLoader();
+    }
   }
 };
 
@@ -103,10 +108,14 @@ const controlRecipe = async () => {
     // Creating new recipe obj
 
     state.recipe = new Recipe(id);
+    //testing
+    // window.r = state.recipe;
 
     try {
-      // get recipe data
+      // get recipe data and partse ingredients
       await state.recipe.getRecipe();
+      console.log(state.recipe.ingredients);
+      state.recipe.parseIngredients();
 
       // calculate serving and time
       state.recipe.calcTime();
