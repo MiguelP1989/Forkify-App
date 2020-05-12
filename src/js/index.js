@@ -108,6 +108,11 @@ const controlRecipe = async () => {
     recipeView.clearRecipe();
     reducerLoader(elements.recipe);
 
+    // highlightedSelected search item
+    if (state.search) {
+      searchView.highlightedSelected(id);
+    }
+
     // Creating new recipe obj
 
     state.recipe = new Recipe(id);
