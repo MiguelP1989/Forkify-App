@@ -146,6 +146,23 @@ const controlRecipe = async () => {
   window.addEventListener(event, controlRecipe)
 );
 
+// handling recipe button clicks
+elements.recipe.addEventListener("click", e => {
+  if (e.target.matches(".btn-increase, .btn-increase *")) {
+    // increase button is clicked
+
+    state.recipe.updateServings("inc");
+    recipeView.updateServingIngredients(state.recipe);
+  } else if (e.target.matches(".btn-decrease, .btn-decrease *")) {
+    // decrease button is clicked
+    if (state.recipe.servings > 1) {
+      state.recipe.updateServings("dec");
+      recipeView.updateServingIngredients(state.recipe);
+    }
+  }
+  console.log("state.recipe......", state.recipe);
+});
+
 // const search = new Search("pizza");
 // console.log("search", search);
 // search.getResults();
