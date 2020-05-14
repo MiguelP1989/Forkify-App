@@ -79,8 +79,10 @@ export const renderRecipe = recipe => {
             </div>
         </div>
         <button class="recipe__love">
-            <svg class="header__likes">
-                <h2>LIKE</h2>
+            <svg>
+
+
+                <h2 class="header__likes" >LIKE</h2>
             </svg>
         </button>
     </div>

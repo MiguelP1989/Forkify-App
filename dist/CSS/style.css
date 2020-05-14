@@ -201,6 +201,10 @@ body {
   }
 } */
 
+.white {
+  color: white;
+}
+
 .loader {
   margin: 5rem auto;
   text-align: center;
@@ -273,7 +277,13 @@ body {
   align-items: center;
   height: 100%;
   transition: all 0.3s;
+  display: none;
 }
+
+.show {
+  display: block;
+}
+
 .likes__field:hover {
   background-color: #f2efee;
 }
@@ -283,7 +293,7 @@ body {
   opacity: 1;
 }
 .likes__icon {
-  fill: #f59a83;
+  /* fill: #f59a83; */
   height: 3.75rem;
   width: 3.75rem;
 }
