@@ -10,7 +10,7 @@ export const renderItem = item => {
         <p class="shopping__description">${item.ingredient}</p>
         <button class="shopping__delete btn-tiny">
             <svg>
-                <use href="img/icons.svg#icon-circle-with-cross"></use>
+                <h2>x</h2>
             </svg>
         </button>
     </li>`;
@@ -19,5 +19,5 @@ export const renderItem = item => {
 
 export const deleteItem = id => {
   const item = document.querySelector(`[data-itemid="${id}"]`);
-  item.parentElement.removeChild(item);
+  if (item) item.parentElement.removeChild(item);
 };
