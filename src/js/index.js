@@ -32,6 +32,8 @@
 
 // import Recipe from "./modules/Search";
 import Search from "./modules/Search";
+import Recipe from "./modules/Recipe";
+import List from "./modules/List";
 import * as searchView from "./views/searchView";
 import * as recipeView from "./views/recipeView";
 import { elements, reducerLoader, clearLoader } from "./views/base";
@@ -92,7 +94,6 @@ elements.searchResPages.addEventListener("click", e => {
 ////////////////////////////////////////////////
 
 /* RECIPE CONTROLER */
-import Recipe from "./modules/Recipe";
 
 // const r = new Recipe(47746);
 // console.log("riiiiii", r);
@@ -160,8 +161,14 @@ elements.recipe.addEventListener("click", e => {
       recipeView.updateServingIngredients(state.recipe);
     }
   }
-  console.log("state.recipe......", state.recipe);
+  // console.log("state.recipe......", state.recipe);
 });
+
+/////////////////////////////////////////////////////////////
+
+/* LIST CONTROLER */
+
+window.l = new List();
 
 // const search = new Search("pizza");
 // console.log("search", search);
