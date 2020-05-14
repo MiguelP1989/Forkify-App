@@ -34,6 +34,7 @@
 import Search from "./modules/Search";
 import Recipe from "./modules/Recipe";
 import List from "./modules/List";
+import Likes from "./modules/Likes";
 import * as searchView from "./views/searchView";
 import * as recipeView from "./views/recipeView";
 import * as listView from "./views/listView";
@@ -163,6 +164,9 @@ elements.recipe.addEventListener("click", e => {
     }
   } else if (e.target.matches(".recipe__btn--add, .recipe__btn--add *")) {
     controlList();
+  } else if (e.target.matches(".recipe__love, .recipe__love *")) {
+    //like CONTROLER
+    controlLike();
   }
   // console.log("state.recipe......", state.recipe);
 });
@@ -201,6 +205,34 @@ const controlList = () => {
       state.list.updateCount(id, val);
     }
   });
+};
+
+//// LIKE CONTROLLER ///
+
+const controlLike = () => {
+  if (!state.likes) state.likes = new Likes();
+  const currentId = state.recipe.id;
+
+  //USER HAS NOT YET LIKED CURRENT RECIPE
+  if (!state.likes.isLiked(currentId)) {
+    //ADD LIKE TO THE state
+    const newLike = state.likes.addLike(
+      currentId,
+      state.recipe.title,
+      state.recipe.author,
+      state.recipe.img
+    );
+    //TOGGLE THE LIKE button
+    // ADD LIKE TO UI LIST
+    console.log("state.likes", state.likes);
+    // USER HAS LIKED CURRENT RECIPE
+  } else {
+    //REMOVE LIKE TO THE state
+    state.likes.deleteLike(currentId);
+    //TOGGLE THE LIKE button
+    // REMOVE LIKE TO UI LIST
+    console.log("state removed", state.likes);
+  }
 };
 
 // const search = new Search("pizza");
