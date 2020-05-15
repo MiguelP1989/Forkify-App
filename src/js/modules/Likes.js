@@ -5,12 +5,13 @@ export default class Likes {
 
   addLike(id, title, author, img) {
     const like = {
-      id,
-      title,
-      author,
-      img
+      id: id,
+      title: title,
+      author: author,
+      img: img
     };
     this.likes.push(like);
+    return like;
   }
 
   deleteLike(id) {

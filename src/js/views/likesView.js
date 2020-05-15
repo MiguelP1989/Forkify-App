@@ -1,4 +1,5 @@
 import { elements } from "./base";
+import { limitRecipieTitle } from "./searchView";
 
 export const toggleLiked = isLiked => {
   // const iconString = isLiked ? "icon-heart" : "icon-heart-outline";
@@ -18,16 +19,16 @@ export const toggleLikeLogo = numLikes => {
 };
 
 export const renderLikes = like => {
-  console.log("like", like.likes[0].id);
+  console.log("like", like.id);
   const markup = `
     <li>
-        <a class="likes__link" href="#${like.likes[0].id}">
+        <a class="likes__link" href="#${like.id}">
             <figure class="likes__fig">
-                <img src="${like.likes[0].img}" alt="${like.likes[0].title}">
+                <img src="${like.img}" alt="${like.title}">
             </figure>
             <div class="likes__data">
-                <h4 class="likes__name">${like.likes[0].title}</h4>
-                <p class="likes__author">${like.likes[0].author}</p>
+                <h4 class="likes__name">${limitRecipieTitle(like.title)}</h4>
+                <p class="likes__author">${like.author}</p>
             </div>
         </a>
     </li>
@@ -36,7 +37,7 @@ export const renderLikes = like => {
 };
 
 export const deleteLike = id => {
-  const el = document.querySelector(`.likes__link[href="#${id}"]`)
-    .parentElement;
+  const el = document.querySelector(`.likes__link[href="#${id}"]`);
+
   if (el) el.parentElement.removeChild(el);
 };

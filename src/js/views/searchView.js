@@ -26,7 +26,7 @@ export const highlightedSelected = id => {
 //acc: 9 / acc + cur./length = 15 / newTitle = ["Pasta", "width", "tomato"]
 //acc: 15 / acc + cur./length = 18 / newTitle = ["Pasta", "width", "tomato"] // more than 17 and doesnt pass the test
 
-const limitRecipieTitle = (title, limit = 17) => {
+export const limitRecipieTitle = (title, limit = 17) => {
   let newTitle = [];
 
   if (title.length > limit) {
