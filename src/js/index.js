@@ -250,6 +250,20 @@ const controlLike = () => {
   likesView.toggleLikeLogo(state.likes.getNumLikes());
 };
 
+///restore liked recipes on page load
+
+window.addEventListener("load", () => {
+  state.likes = new Likes();
+  //restore likes
+  state.likes.readStorage();
+  //toggle like menu button
+  likesView.toggleLikeLogo(state.likes.getNumLikes());
+  // Render the existing likes
+  state.likes.likes.forEach(like => {
+    likesView.renderLikes(like);
+  });
+});
+
 // const search = new Search("pizza");
 // console.log("search", search);
 // search.getResults();
